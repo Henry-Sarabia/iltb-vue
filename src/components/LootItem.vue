@@ -6,9 +6,10 @@
 
 <script>
 export default {
-    name: "ItemInfo",
+    name: "LootItem",
     props: {
-        description: String
+        description: String,
+        value: Number
     }
 }
 </script>

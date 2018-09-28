@@ -7,6 +7,9 @@
       <div class="hero-body">
         <Content/>
       </div>
+      <div class="hero-foot">
+        <TheFooter />
+      </div>
     </div>
   </div>
 </template>
@@ -14,14 +17,14 @@
 <script>
 import TheHeader from './components/TheHeader.vue';
 import Content from './components/Content.vue';
-import FooterBar from './components/FooterBar.vue';
+import TheFooter from './components/TheFooter.vue';
 
 export default {
   name: 'app',
   components: {
     TheHeader,
     Content,
-    FooterBar,
+    TheFooter,
   }
 }
 </script>

@@ -4,20 +4,10 @@
             You rifle through their pockets and find...
         </h2>
         <div>
-            <transition name="flip" mode="out-in">
-                <ItemInfo 
-                    v-if="toggle"
-                    key="item-a"
-                    id="item-a"
-                    v-bind:description="item"
-                />
-                <ItemInfo
-                    v-else
-                    key="item-b"
-                    id="item-b"
-                    v-bind:description="item"
-                />
-            </transition>
+            <Loot 
+                v-bind:item="item"
+                v-bind:toggle="toggle"
+            />
         </div>
         <div class="buttons pushed-down">
             <a class="button is-dark has-text-weight-semibold"
@@ -25,12 +15,12 @@
             >
                 <span>Reroll</span>
             </a>
-            <a class="button is-dark is-outlined"
+            <a class="button is-dark is-outlined "
                 v-on:click="copyItem"
             >
                 <font-awesome-icon 
                         v-bind:icon="['far', 'clipboard']"
-                        size="xs"
+                        size="sm"
                         class="icon is-small"
                 />
                 <span>Copy</span>
@@ -40,8 +30,8 @@
 </template>
 
 <script>
-import {get} from 'axios';
-import ItemInfo from "./ItemInfo.vue";
+import {get} from "axios";
+import Loot from "./Loot.vue";
 
 export default {
     name: "Content",
@@ -52,7 +42,7 @@ export default {
             }
     },
     components: {
-        ItemInfo
+        Loot
     },
     methods: {
         getitem: function () {
@@ -94,49 +84,4 @@ export default {
     margin-top: -20rem;
 }
 
-.flip-enter-active {
-    animation: flipIn 0.3s;
-    backface-visibility: visible !important;
-}
-.flip-leave-active {
-    animation: flipOut 0.3s;
-    backface-visibility: visible !important;
-}
-
-@keyframes flipIn {
-  from {
-    transform: perspective(400px) rotateX(90deg);
-    animation-timing-function: ease-in;
-    opacity: 0;
-  }
-
-  60% {
-    transform: perspective(400px) rotateX(20deg);
-    opacity: 1;
-  }
-
-  to {
-    transform: perspective(400px);
-    animation-timing-function: ease-in-out;
-  }
-  
-}
-
-
-@keyframes flipOut {
-  from {
-    transform: perspective(400px);
-  }
-
-  50% {
-    transform: perspective(400px) rotateX(20deg);
-    animation-timing-function: ease-out;
-    opacity: 1;
-  }
-
-  to {
-    transform: perspective(400px) rotateX(-90deg);
-    opacity: 0;
-  }
-}
 </style>
