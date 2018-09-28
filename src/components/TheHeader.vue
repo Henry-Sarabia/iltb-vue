@@ -1,12 +1,12 @@
 <template>
-    <nav class="navbar">
+    <nav class="navbar bordered">
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="http://192.168.1.8:8080">ILTB</a>
             </div>
             <div class="navbar-menu">
                 <div class="navbar-end">
-                    <div class="navbar-item" href="http://www.github.com">
+                    <div class="navbar-item">
                         <VButton 
                             href="http://www.github.com"
                             class="is-outlined"
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.navbar { 
+.bordered { 
   border-bottom: 1px solid hsl(0, 0%, 15%);
 }
 </style>

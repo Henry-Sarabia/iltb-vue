@@ -86,5 +86,4 @@ export default {
 .pulled-up {
     margin-top: -20rem;
 }
-
 </style>
