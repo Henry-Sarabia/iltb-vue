@@ -10,21 +10,22 @@
             />
         </div>
         <div class="buttons pushed-down">
-            <a class="button is-dark has-text-weight-semibold"
-                v-on:click="getitem"
-            >
-                <span>Reroll</span>
-            </a>
-            <a class="button is-dark is-outlined "
+            <VButton v-on:click="getitem">
+                <span class="has-text-weight-semibold">
+                    Reroll
+                </span>
+            </VButton>
+            <VButton
                 v-on:click="copyItem"
+                class="is-outlined"
             >
                 <font-awesome-icon 
-                        v-bind:icon="['far', 'clipboard']"
-                        size="sm"
-                        class="icon is-small"
+                    v-bind:icon="['far', 'clipboard']"
+                    size="sm"
+                    class="icon is-small"
                 />
                 <span>Copy</span>
-            </a>
+            </VButton>
         </div>
     </div>
 </template>
@@ -32,6 +33,7 @@
 <script>
 import {get} from "axios";
 import Loot from "./Loot.vue";
+import VButton from "./VButton.vue";
 
 export default {
     name: "Content",
@@ -42,7 +44,8 @@ export default {
             }
     },
     components: {
-        Loot
+        Loot,
+        VButton
     },
     methods: {
         getitem: function () {
