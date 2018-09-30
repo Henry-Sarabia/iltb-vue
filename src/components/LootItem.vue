@@ -8,8 +8,7 @@
 export default {
     name: "LootItem",
     props: {
-        description: String,
-        value: Number
+        description: String
     }
 }
 </script>

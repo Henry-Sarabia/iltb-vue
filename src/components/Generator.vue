@@ -77,4 +77,7 @@ export default {
 .pushed-down {
     padding-top: 1rem;
 }
+.grad {
+background-image: linear-gradient(315deg, rgba(202,225,255,1) 0%, rgba(208,255,226,1) 100%);
+}
 </style>

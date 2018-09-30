@@ -34,11 +34,13 @@ export default {
 <style scoped>
 .flip-enter-active {
     animation: flipIn 0.3s;
-    backface-visibility: visible !important;
+    backface-visibility: hidden;
+    /* backface-visibility: visible !important; */
 }
 .flip-leave-active {
     animation: flipOut 0.3s;
-    backface-visibility: visible !important;
+    backface-visibility: hidden;
+    /* backface-visibility: visible !important; */
 }
 
 @keyframes flipIn {
