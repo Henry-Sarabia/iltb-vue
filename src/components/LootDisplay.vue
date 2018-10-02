@@ -1,32 +1,34 @@
 <template>
     <transition name="flip" mode="out-in">
-        <LootItem 
+        <LootDisplayItem 
             v-if="toggle"
             key="item-a"
             id="item-a"
-            v-bind:description="item"
+            v-bind="item"
         />
-        <LootItem
+        <LootDisplayItem
             v-else
             key="item-b"
             id="item-b"
-            v-bind:description="item"
+            v-bind="item"
         />
     </transition>
 </template>
 
 <script>
-import LootItem from "./LootItem.vue"
+import LootDisplayItem from "./LootDisplayItem.vue"
 
 export default {
-    name: "Loot",
+    name: "LootDisplay",
     props: {
-        item: String,
-        value: Number,
+        item: {
+            description: String,
+            value: Number
+        },
         toggle: Boolean
     },
     components: {
-        LootItem
+        LootDisplayItem
     }
 }
 </script>
@@ -35,12 +37,10 @@ export default {
 .flip-enter-active {
     animation: flipIn 0.3s;
     backface-visibility: hidden;
-    /* backface-visibility: visible !important; */
 }
 .flip-leave-active {
     animation: flipOut 0.3s;
     backface-visibility: hidden;
-    /* backface-visibility: visible !important; */
 }
 
 @keyframes flipIn {

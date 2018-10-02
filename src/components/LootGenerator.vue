@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Loot 
+        <LootDisplay 
             v-bind:item="item"
             v-bind:toggle="toggle"
         />
@@ -27,19 +27,22 @@
 
 <script>
 import {get} from "axios";
-import Loot from "./Loot.vue";
+import LootDisplay from "./LootDisplay.vue";
 import VButton from "./VButton.vue";
 
 export default {
-    name: "Generator",
+    name: "LootGenerator",
     data () {
         return {
-            item: "",
+            item: {
+                description: "",
+                value: 0,
+            },
             toggle: true
             }
     },
     components: {
-        Loot,
+        LootDisplay,
         VButton
     },
     methods: {
@@ -47,14 +50,15 @@ export default {
             this.toggle = !this.toggle;
             get("http://192.168.1.8:8081/api/v1/item")
             .then((response) => {
-                this.item = response.data.item;
+                this.item.description = response.data.description;
+                this.item.value = response.data.value;
             }, (error) => {
-                this.item = error;
+                this.item.description = error;
             })
         },
         copyItem: function() {
             const el = document.createElement("textarea");
-            el.value = this.item;
+            el.value = this.item.description;
 
             el.setAttribute("readonly", "");
             el.style.position = "absolute";

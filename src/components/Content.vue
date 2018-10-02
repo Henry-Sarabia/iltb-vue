@@ -1,19 +1,19 @@
 <template>
-    <div class="container pulled-up">
+    <div class="container">
         <h2 class="is-size-5">
             You rifle through their pockets and find...
         </h2>
-        <Generator />
+        <LootGenerator />
     </div>
 </template>
 
 <script>
-import Generator from "./Generator.vue";
+import LootGenerator from "./LootGenerator.vue";
 
 export default {
     name: "Content",
     components: {
-        Generator
+        LootGenerator
     }
 }
 </script>

@@ -1,14 +1,15 @@
 <template>
     <h1 class="is-size-2 has-text-grey-darker has-text-weight-semibold">
-        {{ description }}
+        {{ description }} ({{ value }}gp)
     </h1>
 </template>
 
 <script>
 export default {
-    name: "LootItem",
+    name: "LootDisplayItem",
     props: {
-        description: String
+        description: String,
+        value: Number
     }
 }
 </script>
