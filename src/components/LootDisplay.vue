@@ -3,13 +3,11 @@
         <LootDisplayItem 
             v-if="toggle"
             key="item-a"
-            id="item-a"
             v-bind="item"
         />
         <LootDisplayItem
             v-else
             key="item-b"
-            id="item-b"
             v-bind="item"
         />
     </transition>
@@ -22,8 +20,13 @@ export default {
     name: "LootDisplay",
     props: {
         item: {
+            name: String,
             description: String,
-            value: Number
+            quality: String,
+            material: String,
+            detail: String,
+            value: Number,
+            weight: Number,
         },
         toggle: Boolean
     },

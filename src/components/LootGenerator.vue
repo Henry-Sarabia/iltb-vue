@@ -3,10 +3,11 @@
         <LootDisplay 
             v-bind:item="item"
             v-bind:toggle="toggle"
+            class="selectable"
         />
         <div class="buttons pushed-down">
             <VButton v-on:click="getitem">
-                <span class="has-text-weight-semibold">
+                <span class="has-text-weight-semibold sansfont">
                     Reroll
                 </span>
             </VButton>
@@ -19,7 +20,7 @@
                     size="sm"
                     class="icon is-small"
                 />
-                <span>Copy</span>
+                <span class="sansfont">Copy</span>
             </VButton>
         </div>
     </div>
@@ -35,8 +36,13 @@ export default {
     data () {
         return {
             item: {
+                name: "",
                 description: "",
+                quality: "",
+                material: "",
+                detail: "",
                 value: 0,
+                weight:0,
             },
             toggle: true
             }
@@ -78,10 +84,16 @@ export default {
 </script>
 
 <style scoped>
+.sansfont {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.selectable {
+    user-select:text;
+}
 .pushed-down {
     padding-top: 1rem;
 }
 .grad {
-background-image: linear-gradient(315deg, rgba(202,225,255,1) 0%, rgba(208,255,226,1) 100%);
+    background-image: linear-gradient(315deg, rgba(202,225,255,1) 0%, rgba(208,255,226,1) 100%);
 }
 </style>

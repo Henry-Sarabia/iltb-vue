@@ -2,7 +2,11 @@
     <nav class="navbar bordered">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="http://192.168.1.8:8080">ILTB</a>
+                <a 
+                    class="is-size-4 navbar-item has-text-black-ter has-text-weight-normal" 
+                    href="http://192.168.1.8:8080">
+                    I Loot The Body
+                </a>
             </div>
             <div class="navbar-menu">
                 <div class="navbar-end">
@@ -16,7 +20,9 @@
                                 size="sm"
                                 class="icon"
                             />
-                            <span>Explore</span>
+                            <span class="sansfont">
+                                Explore
+                            </span>
                         </VButton>
                     </div>
                 </div>
@@ -37,7 +43,14 @@ export default {
 </script>
 
 <style scoped>
+.sansfont {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 .bordered { 
-  border-bottom: 1px solid hsl(0, 0%, 15%);
+  /* border-bottom: 1px solid hsl(0, 0%, 15%); */
+  background-color: #84a8c6 !important;
+  /* background-color: #5d707f !important; */
+    /* background-color: #faf3dd !important; */
+
 }
 </style>

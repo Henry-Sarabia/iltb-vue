@@ -1,6 +1,11 @@
 <template>
-    <h1 class="is-size-2 has-text-grey-darker has-text-weight-semibold">
-        {{ description }} ({{ value }}gp)
+    <h1>
+        <span class="is-size-2 has-text-black-bis has-text-weight-semibold">
+            {{ description }}
+        </span>
+        <span class="is-size-3 has-text-black-ter">
+            ({{ value }}gp)
+        </span>
     </h1>
 </template>
 
@@ -8,8 +13,13 @@
 export default {
     name: "LootDisplayItem",
     props: {
+        name: String,
         description: String,
-        value: Number
+        quality: String,
+        material: String,
+        detail: String,
+        value: Number,
+        weight: Number,
     }
 }
 </script>
