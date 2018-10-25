@@ -1,7 +1,7 @@
 <template>
-    <div class="blog-card spring-fever" v-bind:style="layer">
+    <div class="blog-card spring-fever">
         <div class="title-content">
-            <h3>{{ index }}</h3>
+            <h3>{{ item.name }}</h3>
             <hr />
             <div class="intro">{{ id }}</div>
         </div>
@@ -33,16 +33,6 @@ export default {
             weight: Number,
         },
         id: String,
-        index: Number,
-        length: Number
-    },
-    computed: {
-      layer () {
-        var i = this.length - this.index;
-        return {
-          "z-index": `${i}`
-        };
-      }
     }
 }
 </script>

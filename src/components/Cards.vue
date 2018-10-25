@@ -6,12 +6,10 @@
             ref="vueswing"
         >
             <Card
-                v-for="(item, index) in reordered"
-                :key="item.id"
-                v-bind:item="item.item"
-                v-bind:id="item.id"
-                v-bind:index="index"
-                v-bind:length="items.length"
+                v-for="wrapper in reordered"
+                :key="wrapper.id"
+                v-bind:item="wrapper.item"
+                v-bind:id="wrapper.id"
             />
         </vue-swing>
     </div>
@@ -28,7 +26,7 @@ export default {
         Card
     },
     props: {
-        items: Array
+        itemWrappers: Array
     },
     data () {
         return {
@@ -45,18 +43,18 @@ export default {
             }
         }
     },
-    methods: {
+    methods: { 
         onThrowoutEnd() {
-            this.$emit("decrement");
-            // const items = this.$refs.vueswing.items
-            // items[items.length - 1].throwIn(100, 100);
-            // this.items.pop();
-            // this.items.shift();
+            this.$emit("decrement"); 
+            // const itemWrappers = this.$refs.vueswing.itemWrappers
+            // itemWrappers[itemWrappers.length].throwIn(100, 100);
+            // this.itemWrappers.pop();
+            // this.itemWrappers[this.itemWrappers.length - 1].swung = true;
         }
     },
     computed: {
         reordered() {
-            return this.items.slice().reverse();
+            return this.itemWrappers.slice().reverse();
         }
     }
 }
