@@ -2,7 +2,7 @@
     <div>
         <Cards
             v-bind:itemWrappers="itemWrappers"
-            v-on:decrement="unshiftItem"
+            v-on:decrement="getItem"
         />
     </div>
 </template>
@@ -24,7 +24,7 @@ export default {
         VButton
     },
     methods: {
-        pushItem: function () {
+        getItem: function () {
             get("http://192.168.1.8:8081/api/v1/item")
             .then((response) => {
                 this.itemWrappers.push(response.data);
@@ -32,19 +32,11 @@ export default {
             }, (error) => {
                 this.itemWrappers.push(error);
             })
-        },
-        unshiftItem: function() {
-            get("http://192.168.1.8:8081/api/v1/item")
-            .then((response) => {
-                this.itemWrappers.push(response.data);
-            }, (error) => {
-                this.itemWrappers.unshift(error);
-            })
         }
     },
     created() {
         for(var i = 0; i < 4; i++) {
-            this.pushItem();
+            this.getItem();
         }
         // this.itemWrappers = this.temp;
     }
