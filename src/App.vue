@@ -46,7 +46,6 @@ export default {
   background-repeat: repeat;
   /* clip-path: polygon(0 6%, 100% 0, 100% 94%, 0% 100%); */
   clip-path: polygon(0 0%, 100% 6%, 100% 100%, 0% 94%);
-  user-select: none;
 }
 
 </style>
