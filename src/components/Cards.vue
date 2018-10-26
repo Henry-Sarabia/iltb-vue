@@ -6,7 +6,7 @@
             ref="vueswing"
         >
             <Card
-                v-for="wrapper in reordered"
+                v-for="wrapper in itemWrappers"
                 :key="wrapper.id"
                 v-bind:item="wrapper.item"
                 v-bind:id="wrapper.id"
@@ -32,24 +32,25 @@ export default {
         return {
             config: {
                 allowedDirections: [
-                    // VueSwing.Direction.UP,
-                    // VueSwing.Direction.DOWN,
                     VueSwing.Direction.LEFT,
                     VueSwing.Direction.RIGHT
                 ],
-                minThrowOutDistance: 350,
-                maxThrowOutDistance: 600,
+                minThrowOutDistance: 425,
+                maxThrowOutDistance: 650,
                 maxRotation: 30,
             }
         }
     },
     methods: { 
-        onThrowoutEnd() {
+        onThrowoutEnd({target}) {
+            if (target.hasSwung) {
+                return
+            }
+            target.hasSwung = true;
             this.$emit("decrement"); 
-            // const itemWrappers = this.$refs.vueswing.itemWrappers
-            // itemWrappers[itemWrappers.length].throwIn(100, 100);
-            // this.itemWrappers.pop();
-            // this.itemWrappers[this.itemWrappers.length - 1].swung = true;
+            if (this.itemWrappers.length > 10) {
+                this.itemWrappers.shift();
+            }
         }
     },
     computed: {

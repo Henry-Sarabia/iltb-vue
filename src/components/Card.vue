@@ -3,7 +3,7 @@
         <div class="title-content">
             <h3>{{ item.name }}</h3>
             <hr />
-            <div class="intro">{{ id }}</div>
+            <div class="intro">{{ item.description }}</div>
         </div>
         <div class="card-info">
             {{ item.description }}
