@@ -10,6 +10,7 @@
                 :key="wrapper.id"
                 v-bind:item="wrapper.item"
                 v-bind:id="wrapper.id"
+                v-bind:shadow="getShadow"
             />
         </vue-swing>
     </div>
@@ -48,14 +49,9 @@ export default {
             }
             target.hasSwung = true;
             this.$emit("decrement"); 
-            if (this.itemWrappers.length > 10) {
+            if (this.itemWrappers.length > 15) {
                 this.itemWrappers.shift();
             }
-        }
-    },
-    computed: {
-        reordered() {
-            return this.itemWrappers.slice().reverse();
         }
     }
 }

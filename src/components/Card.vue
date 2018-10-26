@@ -15,8 +15,8 @@
             </ul>
         </div>
         <!-- overlays -->
-        <!-- <div class="gradient-overlay"></div> -->
-        <!-- <div class="color-overlay"></div> -->
+        <div class="gradient-overlay"></div>
+        <div class="color-overlay"></div>
     </div>
 </template>
 
@@ -54,6 +54,9 @@ $txt-color:   #DCE3E7;
   padding: 0;
 }
 
+body{
+  background: #323c41;
+}
 
 .blog-card{
   width: $card-width;
@@ -64,8 +67,9 @@ $txt-color:   #DCE3E7;
   margin: -250px 0 0 -175px;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
   text-align: center;
+  z-index: 1;
   
   &.spring-fever{
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/bg-blog-card.jpg) no-repeat;
@@ -73,24 +77,40 @@ $txt-color:   #DCE3E7;
   
   .color-overlay{
     /* Rectangle 11: */
-    background: rgba(84,104,110,0.05);
+    background: rgba(84,104,110,0.3);
     width: $card-width;
     height: $card-height;
     position: absolute;
-    // z-index: 10;
+    z-index: 10;
     top: 0;
     left: 0;
     transition: background .3s cubic-bezier(.33,.66,.66,1);
   }
   .gradient-overlay{
     /* bg-gradient: */
-    background-image: linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.1) 21%);
+    background-image: -webkit-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background-image: -o-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background-image: linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
     width: $card-width;
     height: $card-height;
     position: absolute;
     top: 350px;
     left: 0;
-    // z-index: 15;
+    z-index: 15;
+  }
+  
+  &:hover{
+    transition: box-shadow .2s cubic-bezier(.33,.66,.66,1);
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 1);
+    
+    // .card-info{
+    //   opacity: 1;
+    //   bottom: 120px;
+    // }
+    // .color-overlay{
+    //   background: rgba(84,104,110,0.8);
+    // }
   }
 }
 
@@ -98,7 +118,7 @@ $txt-color:   #DCE3E7;
   text-align: center;
   margin: 70px 0 0 0;
   position: absolute;
-  // z-index: 20;
+  z-index: 20;
   width: 100%;
   top: 0;
   left: 0;
@@ -123,7 +143,7 @@ hr{
   margin: 0 auto;
   color: $txt-color;
   font-family: 'Droid Serif', serif;
-  font-size: 20px;
+  font-size: 13px;
   font-style: italic;
   line-height: 18px;
 }
@@ -138,7 +158,7 @@ hr{
   font-family: 'Droid Serif', serif;
   font-style: 16px;
   line-height: 24px;
-  // z-index: 1;
+  z-index: 20;
   opacity: 0;
   transition: bottom .3s, opacity .3s cubic-bezier(.33,.66,.66,1);
 }
@@ -147,7 +167,7 @@ hr{
   position: absolute;
   bottom: 0px;
   left: 0;
-  // z-index: 20;
+  z-index: 20;
 }
 .utility-list{
   list-style-type: none;

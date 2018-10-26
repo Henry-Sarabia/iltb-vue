@@ -38,7 +38,6 @@ export default {
         for(var i = 0; i < 4; i++) {
             this.getItem();
         }
-        // this.itemWrappers = this.temp;
     }
 }
 </script>
