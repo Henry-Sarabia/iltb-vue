@@ -1,20 +1,37 @@
 <template>
-    <div class="blog-card spring-fever">
+    <div class="blog-card card-background"
+      v-bind:class="{ shadow: showShadow }">
         <div class="title-content">
             <h3>{{ item.name }}</h3>
-            <hr />
+            <h3>{{ index }} </h3>
+            <hr/>
             <div class="intro">{{ item.description }}</div>
         </div>
         <div class="card-info">
             {{ item.description }}
         </div>
-        <div class="utility-info">
-            <ul class="utility-list">
-                <li class="comments">{{ item.value }} gp </li>
-                <li class="date">{{ item.weight }}</li>
-            </ul>
+        <div class="card-stats">
+            <div class="stat-info">
+              <div class="left-corner">
+                  <font-awesome-icon 
+                      :icon="['fas', 'coins']"
+                      size="md"
+                      class="icon is-small coins"
+                  >
+                  </font-awesome-icon>
+                  <span>{{ item.value }} gp</span>
+              </div>
+              <div class="right-corner">
+                  <font-awesome-icon 
+                      :icon="['fas', 'weight-hanging']"
+                      size="md"
+                      class="icon is-small weight"
+                  >
+                  </font-awesome-icon>
+                  <span>{{ item.weight }} lb</span>
+              </div>
+            </div>
         </div>
-        <!-- overlays -->
         <div class="gradient-overlay"></div>
         <div class="color-overlay"></div>
     </div>
@@ -33,6 +50,8 @@ export default {
             weight: Number,
         },
         id: String,
+        index: Number,
+        showShadow: Boolean,
     }
 }
 </script>
@@ -47,6 +66,9 @@ $card-height: 500px;
 $h-color:     #9CC9E3;
 $yellow:      #D0BB57;
 $txt-color:   #DCE3E7;
+$title-size: 1.75em;
+$description-size: 1em;
+$stat-size: 1.25em;
 
 * {
   box-sizing: border-box;
@@ -58,6 +80,10 @@ body{
   background: #323c41;
 }
 
+.shadow {
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
+}
+
 .blog-card{
   width: $card-width;
   height: $card-height;
@@ -67,11 +93,11 @@ body{
   margin: -250px 0 0 -175px;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
+  // box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
   text-align: center;
-  z-index: 1;
+  z-index: 1; 
   
-  &.spring-fever{
+  &.card-background{
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/bg-blog-card.jpg) no-repeat;
   }
   
@@ -88,9 +114,6 @@ body{
   }
   .gradient-overlay{
     /* bg-gradient: */
-    background-image: -webkit-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
-    background-image: -moz-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
-    background-image: -o-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
     background-image: linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
     width: $card-width;
     height: $card-height;
@@ -124,7 +147,8 @@ body{
   left: 0;
 }
 h3{
-  font-size: 20px;
+  // font-size: 20px;
+  font-size: $title-size;
   font-weight: 500;
   letter-spacing: 2px;
   color: $h-color;
@@ -143,7 +167,8 @@ hr{
   margin: 0 auto;
   color: $txt-color;
   font-family: 'Droid Serif', serif;
-  font-size: 13px;
+  // font-size: 13px;
+  font-size: $description-size;
   font-style: italic;
   line-height: 18px;
 }
@@ -163,33 +188,43 @@ hr{
   transition: bottom .3s, opacity .3s cubic-bezier(.33,.66,.66,1);
 }
 
-.utility-info{
+.card-stats {
   position: absolute;
-  bottom: 0px;
-  left: 0;
+  bottom: 20px;
+  width: 100%;
   z-index: 20;
 }
-.utility-list{
-  list-style-type: none;
-  margin: 0 0 30px 20px;
+
+.stat-info{
+  position: relative;
   padding: 0;
-  width: 100%;
-  
-  li{
-    margin: 0 15px 0 0;
-    padding: 0 0 0 22px;
-    display: inline-block;
-    color: $txt-color;
-    font-family: 'Roboto', sans-serif;
-    
-    &.comments{
-      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-chat.svg) no-repeat 0 .1em;
+  font-size: $stat-size;
+  color: $txt-color;
+  font-family: "Roboto", sans-serif;
+  // width: 100%;
+
+  .left-corner {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+  }
+
+  .right-corner {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+  }
+
+  span{
+      padding-left: 0.25rem;
     }
-    &.date{
-      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-calendar.svg) no-repeat 0 .1em;
-    }
+
+  .coins{
+    color: $yellow;
+  }
+
+  .weight{
+    color: #c2c3c1;
   }
 }
-
-
 </style>
