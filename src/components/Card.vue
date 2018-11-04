@@ -47,8 +47,9 @@
               </div>
             </div>
         </div>
-        <div class="gradient-overlay"></div>
+        <!-- <div class="gradient-overlay"></div> -->
         <div class="color-overlay"></div>
+        <div class="outline-overlay"></div>
     </div>
 </template>
 
@@ -81,6 +82,8 @@ $card-width:  350px;
 $card-height: 500px;
 $card-radius: 10px;
 
+$border-width: 2px;
+
 $black: hsl(0,0,14%);
 $yellow: #D0BB57;
 $offwhite: #c2c3c1;
@@ -89,7 +92,7 @@ $body-color: #DCE3E7;
 
 $title-size: 1em;
 $description-size: 1.5em;
-$stat-size: 1.25em;
+$stat-size: 1.1em;
 
 * {
   box-sizing: border-box;
@@ -112,7 +115,7 @@ body{
   top: 50%;
   left: 50%;
   margin: -250px 0 0 -175px;
-  overflow: hidden;
+  // overflow: hidden;
   border-radius: $card-radius;
   // box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
   text-align: center;
@@ -132,6 +135,7 @@ body{
     z-index: 10;
     top: 0;
     left: 0;
+    border-radius: $card-radius;
     // transition: background .3s cubic-bezier(.33,.66,.66,1);
   }
   .gradient-overlay{
@@ -142,6 +146,17 @@ body{
     top: 350px;
     left: 0;
     z-index: 15;
+  }
+
+  .outline-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $card-width;
+    height: $card-height;
+    border: 6px solid $black;
+    border-radius: $card-radius;
+    z-index: 20;
   }
   
   &:hover{
@@ -155,8 +170,12 @@ body{
   z-index: 20;
   top: 20px;
   padding: 5px 20px;
-  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
-  background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
+  // clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  border-radius: 2px;
+  border: $border-width solid $black;
+  // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
+  // background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+  background: $header-color;
 
   h1{
     font-size: $title-size;
@@ -171,11 +190,12 @@ body{
   z-index: 20;
   top: 30%;
   width: 100%;
-  padding: 20px 45px 20px 20px;
-  margin: 0 auto;
-  background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
-  // clip-path: polygon(10% 0, 100% 0%, 100% 100%, 10% 100%);
-  // clip-path: polygon(0 0, 90% 0, 90% 100%, 0 100%);
+  padding: 20px;
+  // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
+  // background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+  background: $body-color;
+  border: $border-width solid $black;
+  border-radius: 2px;
 
   .content-description {
     width: 100%;
@@ -193,7 +213,7 @@ body{
   position: absolute;
   bottom: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 25;
 }
 
 .stat-info{
@@ -205,56 +225,47 @@ body{
 
   .left-corner {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 70px;
-    width: 70px;
-    background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
-    clip-path: circle(100% at 0 100%);
-    // clip-path: ellipse(80% 100% at 0% 100%);
+    bottom: -10px;
+    left: -10px;
+    // height: 67px;
+    // width: 67px;
+    height: 80px;
+    width: 80px;
+    // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
+    background: $yellow;
+    // background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    border: $border-width solid $black;
+    // border-radius: 50% 50% 50% 10px;
+    border-radius: 50%;
+
     .stat-value {
+      position: relative;
+      margin-top: 30%;
       color: $black;
     }
   }
 
   .right-corner {
     position: absolute;
-    height: 65px;
-    width: 65px;
-    bottom: 0;
-    right: 0;
-    background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
-    // clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0 50%);
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
-    border-radius: 5px 0 0 0;
-    // clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+    height: 80px;
+    width: 80px;
+    bottom: -10px;
+    right: -10px;
+    // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
+    // background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); 
+    background: $offwhite;
+    // clip-path: polygon(15% 10%, 85% 10%, 100% 90%, 0 90%);
+    border: $border-width solid $black;
+    // border-radius: 35px 35px 15px 15px; 
+    border-radius: 20% 20% 10% 10% / 90% 90% 10% 10% ;
 
     .stat-weight {
-      // position: relative;
+      position: relative;
+      margin-top: 30%;
       color: $black;
-      // top: 0.5rem;
-      // left: 0.5rem;
+
     }
   }
-  
-  // .left-corner {
-  //   position: absolute;
-  //   bottom: 20px;
-  //   left: 20px;
-  // }
-
-  // span{
-  //     padding-left: 0.25rem;
-  //     padding-right: 1rem;
-  //   }
-
-  // .coins{
-  //   color: $yellow;
-  // }
-
-  // .weight{
-  //   color: $offwhite;
-  // }
 }
 
 .title-content{
