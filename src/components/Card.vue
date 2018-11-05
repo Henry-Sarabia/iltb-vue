@@ -4,6 +4,9 @@
         <div class="card-title">
           <h1>{{ item.name }}</h1>
         </div>
+        <div class="card-category">
+          <h2>{{ item.class }}</h2>
+        </div>
         <div class="title-content">
             <!-- <h3>{{ item.name }}</h3> -->
             <!-- <h2>{{ item.class }}</h2>
@@ -16,25 +19,12 @@
               {{ item.description }}
             </span>
           </div>
+          <!-- <div class="content-category">
+            {{ item.class }}
+          </div> -->
         </div>
         <div class="card-stats">
             <div class="stat-info">
-              <!-- <div class="left-corner">
-                  <font-awesome-icon 
-                      :icon="['fas', 'coins']"
-                      size="sm"
-                      class="icon is-small coins"
-                  >
-                  </font-awesome-icon>
-                  <span>{{ item.value }} gp</span>
-                  <font-awesome-icon 
-                      :icon="['fas', 'weight-hanging']"
-                      size="xs"
-                      class="icon is-small weight"
-                  >
-                  </font-awesome-icon>
-                  <span>{{ item.weight }} lb</span>
-              </div> -->
               <div class="left-corner">
                 <div class="stat-value">
                   <span>{{item.value}} gp</span>
@@ -87,12 +77,15 @@ $border-width: 2px;
 $black: hsl(0,0,14%);
 $yellow: #D0BB57;
 $offwhite: #c2c3c1;
+$green: #b5d6b2;
 $header-color:#9CC9E3;
 $body-color: #DCE3E7;
 
 $title-size: 1em;
 $description-size: 1.5em;
 $stat-size: 1.1em;
+
+$black-gradient: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15));
 
 * {
   box-sizing: border-box;
@@ -115,7 +108,6 @@ body{
   top: 50%;
   left: 50%;
   margin: -250px 0 0 -175px;
-  // overflow: hidden;
   border-radius: $card-radius;
   // box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
   text-align: center;
@@ -123,11 +115,10 @@ body{
   
   &.card-background{
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/bg-blog-card.jpg) no-repeat;
-    background: red;
+    // background: red;
   }
   
   .color-overlay{
-    /* Rectangle 11: */
     width: $card-width;
     height: $card-height;
     background: rgba(84,104,110,0.35);
@@ -168,44 +159,71 @@ body{
 .card-title {
   position: absolute;
   z-index: 20;
-  top: 20px;
+  top: 37px;
   padding: 5px 20px;
   // clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
   border-radius: 2px;
   border: $border-width solid $black;
-  // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
-  // background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
   background: $header-color;
 
-  h1{
+  h1 {
     font-size: $title-size;
     font-weight: 500;
     color: $black;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     font-family: "Roboto", sans-serif;
   }
 }
+
+.card-category {
+  position: absolute;
+  z-index: 20;
+  top: 4px;
+  right: 4px;
+  padding: 3px 7px;
+  // border-radius: 2px;
+  border-radius: 3px 2px 5px 14px;
+  border: $border-width solid $black;
+  background: $green;
+
+  h2 {
+    font-size: $title-size;
+    font-weight: 500;
+    color: $black;
+    letter-spacing: 1.5px;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
 .card-content{
   position: absolute;
   z-index: 20;
-  top: 30%;
-  width: 100%;
+  // top: 30%;
+  // top: 191px;
+  top: 33%;
   padding: 20px;
-  // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
-  // background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15));
   background: $body-color;
   border: $border-width solid $black;
   border-radius: 2px;
 
   .content-description {
-    width: 100%;
-    height: 100%;
     text-align: center;
     color: $black;
     font-family: 'Droid Serif', serif;
     font-size: $description-size;
     font-weight: 400;
     line-height: 1.15em;
+  }
+
+  .content-category {
+    position: absolute;
+    // bottom: -34px;
+    top: -34px;
+    right: 2px;
+    padding: 3px 5px;
+    border: $border-width solid $black;
+    border-radius: 2px;
+    background: $green;
   }
 }
 
@@ -227,15 +245,10 @@ body{
     position: absolute;
     bottom: -10px;
     left: -10px;
-    // height: 67px;
-    // width: 67px;
     height: 80px;
     width: 80px;
-    // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
     background: $yellow;
-    // background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
     border: $border-width solid $black;
-    // border-radius: 50% 50% 50% 10px;
     border-radius: 50%;
 
     .stat-value {
@@ -251,13 +264,11 @@ body{
     width: 80px;
     bottom: -10px;
     right: -10px;
-    // background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1));
-    // background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); 
     background: $offwhite;
-    // clip-path: polygon(15% 10%, 85% 10%, 100% 90%, 0 90%);
     border: $border-width solid $black;
-    // border-radius: 35px 35px 15px 15px; 
     border-radius: 20% 20% 10% 10% / 90% 90% 10% 10% ;
+    // clip-path: polygon(15% 10%, 85% 10%, 100% 90%, 0 90%);
+    // border-radius: 35px 35px 15px 15px; 
 
     .stat-weight {
       position: relative;
