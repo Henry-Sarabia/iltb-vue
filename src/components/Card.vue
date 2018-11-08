@@ -1,44 +1,52 @@
 <template>
     <div class="blog-card card-background"
-      v-bind:class="{ shadow: showShadow }">
+      
+      :style="{backgroundImage: `url(${require(`../assets/${item.class}.jpg`)})`}"
+    >
         <div class="card-title">
           <h1>{{ item.name }}</h1>
-        </div>
-        <div class="card-category">
-          <h2>{{ item.class }}</h2>
-        </div>
-        <div class="title-content">
-            <!-- <h3>{{ item.name }}</h3> -->
-            <!-- <h2>{{ item.class }}</h2>
-            <h3>{{ index }} </h3>
-            <hr/> -->
         </div>
         <div class="card-content">
           <div class="content-description">
             <span>
-              {{ item.description }}
+              {{ item.description }}.
             </span>
           </div>
-          <!-- <div class="content-category">
-            {{ item.class }}
-          </div> -->
         </div>
         <div class="card-stats">
             <div class="stat-info">
-              <div class="left-corner">
+              <div class="stat-left">
                 <div class="stat-value">
-                  <span>{{item.value}} gp</span>
+                  <span>
+                    <font-awesome-icon 
+                      v-bind:icon="['fas', 'coins']"
+                      size="xs"
+                      class="icon is-small"
+                    ></font-awesome-icon>
+                    {{item.value}} gp
+                  </span>
                 </div>
               </div>
-              <div class="right-corner">
+              <div class="stat-center">
+                <h2> {{ item.class }} </h2>
+              </div>
+              <div class="stat-right">
                 <div class="stat-weight">
-                  <span>{{ item.weight }} lb</span>
+                  <span>
+                    <font-awesome-icon 
+                      v-bind:icon="['fas', 'weight-hanging']"
+                      size="xs"
+                      class="icon is-small"
+                    ></font-awesome-icon>
+                    {{ item.weight }} lb
+                  </span>
                 </div>
               </div>
             </div>
         </div>
-        <!-- <div class="gradient-overlay"></div> -->
-        <div class="color-overlay"></div>
+        <div class="gradient-overlay"></div>
+        <!-- <div class="color-overlay"></div> -->
+        <!-- <div class="color-overlay2"></div> -->
         <div class="outline-overlay"></div>
     </div>
 </template>
@@ -59,7 +67,7 @@ export default {
         id: String,
         index: Number,
         showShadow: Boolean,
-    }
+    },
 }
 </script>
 
@@ -69,23 +77,39 @@ export default {
 
 // variables
 $card-width:  350px;
-$card-height: 500px;
-$card-radius: 10px;
+$card-height: 520px;
+$card-radius: 3px;
 
 $border-width: 2px;
+$border-offset: 4px;
 
-$black: hsl(0,0,14%);
-$yellow: #D0BB57;
+$white: hsl(0, 0%, 96%);
+// $black: hsl(0,0,14%);
+$black: #0f1315;
+// $yellow: #D0BB57;
+$yellow: #FFD700;
 $offwhite: #c2c3c1;
 $green: #b5d6b2;
-$header-color:#9CC9E3;
+$blue:#9CC9E3;
+$red: #ff9585;
+
 $body-color: #DCE3E7;
 
-$title-size: 1em;
-$description-size: 1.5em;
-$stat-size: 1.1em;
+$background-yellow: rgba(235, 186, 92, 0.99);
+$background-offwhite: rgba(202, 209, 209, 0.99);
 
-$black-gradient: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+$stroke: -1px -1px 0 $black,  1px -1px 0 $black, -1px 1px 0 $black, 1px 1px 0 $black;
+
+$title-size: 1.2em;
+$description-size: 1.75em;
+$stat-size: 1.25em;
+$caps-size: 1.1em;
+
+$stat-weight: 500;
+
+$black-gradient: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+$black-fade: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 10%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.55) 90%, rgba(0,0,0,0) 100%);
+$white-gradient: linear-gradient(rgba(245,245,245,0.7), rgba(245,245,245,0.7));
 
 * {
   box-sizing: border-box;
@@ -109,13 +133,16 @@ body{
   left: 50%;
   margin: -250px 0 0 -175px;
   border-radius: $card-radius;
-  // box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, .4);
   text-align: center;
-  z-index: 1; 
+  z-index: 1;
+  
   
   &.card-background{
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/bg-blog-card.jpg) no-repeat;
-    // background: red;
+    // background: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
   
   .color-overlay{
@@ -129,13 +156,26 @@ body{
     border-radius: $card-radius;
     // transition: background .3s cubic-bezier(.33,.66,.66,1);
   }
-  .gradient-overlay{
+
+  .color-overlay2{
     width: $card-width;
     height: $card-height;
-    background-image: linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background: hsla(0,0,20,0.2);
     position: absolute;
-    top: 350px;
+    z-index: 10;
+    top: 0;
     left: 0;
+    border-radius: $card-radius;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $card-width;
+    height: $card-height;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.65) 90%);
+    border-radius: $card-radius;
     z-index: 15;
   }
 
@@ -160,70 +200,42 @@ body{
   position: absolute;
   z-index: 20;
   top: 37px;
-  padding: 5px 20px;
-  // clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  padding: 5px 30px 5px 20px;
+  clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
   border-radius: 2px;
-  border: $border-width solid $black;
-  background: $header-color;
+  background-image: $black-gradient;
+
 
   h1 {
     font-size: $title-size;
     font-weight: 500;
-    color: $black;
-    letter-spacing: 1.5px;
+    color: $blue;
+    letter-spacing: 1px;
     font-family: "Roboto", sans-serif;
-  }
-}
-
-.card-category {
-  position: absolute;
-  z-index: 20;
-  top: 4px;
-  right: 4px;
-  padding: 3px 7px;
-  // border-radius: 2px;
-  border-radius: 3px 2px 5px 14px;
-  border: $border-width solid $black;
-  background: $green;
-
-  h2 {
-    font-size: $title-size;
-    font-weight: 500;
-    color: $black;
-    letter-spacing: 1.5px;
-    font-family: "Roboto", sans-serif;
+    text-transform: capitalize;
+    text-shadow: $stroke;
   }
 }
 
 .card-content{
   position: absolute;
   z-index: 20;
-  // top: 30%;
-  // top: 191px;
   top: 33%;
   padding: 20px;
-  background: $body-color;
-  border: $border-width solid $black;
-  border-radius: 2px;
+  background-image: $black-gradient;
 
   .content-description {
     text-align: center;
-    color: $black;
+    color: $blue;
     font-family: 'Droid Serif', serif;
     font-size: $description-size;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.15em;
-  }
-
-  .content-category {
-    position: absolute;
-    // bottom: -34px;
-    top: -34px;
-    right: 2px;
-    padding: 3px 5px;
-    border: $border-width solid $black;
-    border-radius: 2px;
-    background: $green;
+    text-shadow: $stroke;
+    
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 }
 
@@ -237,70 +249,68 @@ body{
 .stat-info{
   position: relative;
   padding: 0;
-  font-size: $stat-size;
   color: $body-color;
   font-family: "Roboto", sans-serif;
+  text-shadow: $stroke;
 
-  .left-corner {
+  .stat-left {
     position: absolute;
-    bottom: -10px;
-    left: -10px;
-    height: 80px;
-    width: 80px;
-    background: $yellow;
-    border: $border-width solid $black;
-    border-radius: 50%;
+    bottom: $border-offset;
+    left: $border-offset;
+    padding: 10px;
+    border-radius: 2px;
 
     .stat-value {
-      position: relative;
-      margin-top: 30%;
-      color: $black;
+      font-size: $stat-size;
+      font-weight: $stat-weight;
+      color: $blue;
+      font-family: "Roboto", sans-serif;
+      // font-variant: small-caps;
+
+      .icon {
+        color: $yellow;
+      }
     }
   }
 
-  .right-corner {
+  .stat-right {
     position: absolute;
-    height: 80px;
-    width: 80px;
-    bottom: -10px;
-    right: -10px;
-    background: $offwhite;
-    border: $border-width solid $black;
-    border-radius: 20% 20% 10% 10% / 90% 90% 10% 10% ;
-    // clip-path: polygon(15% 10%, 85% 10%, 100% 90%, 0 90%);
-    // border-radius: 35px 35px 15px 15px; 
+    bottom: $border-offset;
+    right: $border-offset;
+    padding: 10px;
+    border-radius: 2px;
 
     .stat-weight {
-      position: relative;
-      margin-top: 30%;
-      color: $black;
+      font-size: $stat-size;
+      font-weight: $stat-weight;
+      color: $blue;
+      font-family: "Roboto", sans-serif;
+      // font-variant: small-caps;
 
+      .icon {
+        color: $offwhite;
+      }
     }
   }
-}
 
-.title-content{
-  text-align: center;
-  margin: 70px 0 0 0;
-  position: absolute;
-  z-index: 20;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-h3{
-  font-size: $title-size;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: $header-color;
-  font-family: 'Roboto', sans-serif;
-  margin-bottom: 0;
-}
-h2{
-  font-size: $stat-size;
-  font-weight: 500;
-  color: $yellow;
-  font-family: 'Roboto', sans-serif;
+  .stat-center {
+    position: absolute;
+    bottom: $border-offset;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 10px;
+    border-radius: 2px;
+
+    h2 {
+      font-size: $stat-size;
+      font-weight: 500;
+      color: $blue;
+      letter-spacing: 1px;
+      font-family: "Roboto", sans-serif;
+      font-variant: small-caps;
+    }
+  }
+
 }
 hr{
   width: 50px;
