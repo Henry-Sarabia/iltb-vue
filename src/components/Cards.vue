@@ -57,7 +57,7 @@ export default {
             target.hasSwung = true;
             this.swungCards[this.topCard] = true;
             this.$emit("decrement"); 
-            if (this.itemWrappers.length > 10) {
+            if (this.itemWrappers.length > 8) {
                 this.itemWrappers.shift();
             }
             // this.iterateTopCard();
