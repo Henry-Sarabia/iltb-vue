@@ -90,10 +90,7 @@ $white: hsl(0, 0%, 96%);
 $black: #0f1315;
 $grey: #b9c1c6;
 $yellow: #FFD700;
-$offwhite: #c2c3c1;
-$green: #b5d6b2;
 $blue:#9CC9E3;
-$red: #ff9585;
 
 $title-color: $blue;
 $body-color: $white;
@@ -101,15 +98,11 @@ $category-color: $blue;
 $coin-color: $yellow;
 $weight-color: $grey;
 
-$background-yellow: rgba(235, 186, 92, 0.99);
-$background-offwhite: rgba(202, 209, 209, 0.99);
-
 $stroke: -1px -1px 0 $black,  1px -1px 0 $black, -1px 1px 0 $black, 1px 1px 0 $black;
 
-$title-size: 1.2em;
+$title-size: 1.25em;
 $body-size: 1.75em;
 $stat-size: 1.25em;
-$caps-size: 1.1em;
 
 $title-weight: 600;
 $body-weight: 700;
@@ -121,13 +114,6 @@ $stat-font: 'Roboto', sans-serif;
 
 $black-gradient: linear-gradient(rgba(15, 19, 21,0.6), rgba(15, 19, 21,0.6));
 $black-fade: linear-gradient(180deg, rgba(15, 19, 21,0) 0%, rgba(15, 19, 21,0.55) 10%, rgba(15, 19, 21,0.55) 50%, rgba(15, 19, 21,0.55) 90%, rgba(15, 19, 21,0) 100%);
-$white-gradient: linear-gradient(rgba(245,245,245,0.7), rgba(245,245,245,0.7));
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body{
   background: #323c41;
@@ -151,7 +137,6 @@ body{
   
   
   &.card-background{
-    // background: white;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -166,7 +151,6 @@ body{
     top: 0;
     left: 0;
     border-radius: $card-radius;
-    // transition: background .3s cubic-bezier(.33,.66,.66,1);
   }
 
   .gradient-overlay {
@@ -203,7 +187,6 @@ body{
   top: 37px;
   padding: 5px 30px 5px 20px;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-  // border-bottom: 3px solid $black;
   border-radius: 2px;
   background-image: $black-gradient;
 
@@ -224,7 +207,6 @@ body{
   z-index: 20;
   top: 33%;
   padding: 20px;
-  // border: 1px solid $black;
   background-image: $black-gradient;
   
 
