@@ -22,6 +22,7 @@
                       v-bind:icon="['fas', 'coins']"
                       size="xs"
                       class="icon is-small"
+                      transform="up-1"
                     ></font-awesome-icon>
                     {{item.value}} gp
                   </span>
@@ -37,6 +38,7 @@
                       v-bind:icon="['fas', 'weight-hanging']"
                       size="xs"
                       class="icon is-small"
+                      transform="up-1"
                     ></font-awesome-icon>
                     {{ item.weight }} lb
                   </span>
@@ -46,7 +48,6 @@
         </div>
         <div class="gradient-overlay"></div>
         <div class="color-overlay"></div>
-        <!-- <div class="color-overlay2"></div> -->
         <div class="outline-overlay"></div>
     </div>
 </template>
@@ -87,14 +88,18 @@ $border-offset: 4px;
 
 $white: hsl(0, 0%, 96%);
 $black: #0f1315;
+$grey: #b9c1c6;
 $yellow: #FFD700;
 $offwhite: #c2c3c1;
 $green: #b5d6b2;
 $blue:#9CC9E3;
 $red: #ff9585;
 
-$weight-color: #b9c1c6;
-$body-color: #DCE3E7;
+$title-color: $blue;
+$body-color: $white;
+$category-color: $blue;
+$coin-color: $yellow;
+$weight-color: $grey;
 
 $background-yellow: rgba(235, 186, 92, 0.99);
 $background-offwhite: rgba(202, 209, 209, 0.99);
@@ -164,17 +169,6 @@ body{
     // transition: background .3s cubic-bezier(.33,.66,.66,1);
   }
 
-  .color-overlay2{
-    width: $card-width;
-    height: $card-height;
-    background: hsla(0,0,20,0.2);
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    border-radius: $card-radius;
-  }
-
   .gradient-overlay {
     position: absolute;
     top: 0;
@@ -209,6 +203,7 @@ body{
   top: 37px;
   padding: 5px 30px 5px 20px;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  // border-bottom: 3px solid $black;
   border-radius: 2px;
   background-image: $black-gradient;
 
@@ -216,7 +211,7 @@ body{
   h1 {
     font-size: $title-size;
     font-weight: $title-weight;
-    color: $blue;
+    color: $title-color;
     letter-spacing: 1px;
     font-family: $title-font;
     text-transform: capitalize;
@@ -229,12 +224,13 @@ body{
   z-index: 20;
   top: 33%;
   padding: 20px;
+  // border: 1px solid $black;
   background-image: $black-gradient;
   
 
   .content-description {
     text-align: center;
-    color: $blue;
+    color: $body-color;
     font-family: $body-font;
     font-size: $body-size;
     font-weight: $body-weight;
@@ -270,11 +266,11 @@ body{
     .stat-value {
       font-size: $stat-size;
       font-weight: $stat-weight;
-      color: $blue;
+      color: $coin-color;
       font-variant: small-caps;
 
       .icon {
-        color: $yellow;
+        color: $coin-color;
       }
     }
   }
@@ -289,7 +285,7 @@ body{
     .stat-weight {
       font-size: $stat-size;
       font-weight: $stat-weight;
-      color: $blue;
+      color: $weight-color;
       font-variant: small-caps;
 
       .icon {
@@ -309,7 +305,7 @@ body{
     h2 {
       font-size: $stat-size;
       font-weight: $stat-weight;
-      color: $blue;
+      color: $category-color;
       font-variant: small-caps;
       letter-spacing: 1px;
     }
