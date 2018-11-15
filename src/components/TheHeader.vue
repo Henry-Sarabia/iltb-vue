@@ -3,9 +3,9 @@
         <div class="container">
             <div class="navbar-brand">
                 <a 
-                    class="is-size-4 navbar-item has-text-black-ter has-text-weight-normal" 
+                    class="is-size-4 navbar-item has-text-weight-normal" 
                     href="http://192.168.1.8:8080">
-                    I Loot The Body
+                    TEDOMI
                 </a>
             </div>
             <div class="navbar-menu">
@@ -18,7 +18,7 @@
                             <font-awesome-icon 
                                 v-bind:icon="['fab', 'github']"
                                 size="sm"
-                                class="icon"
+                                class="icon is-small"
                             />
                             <span class="sansfont">
                                 Explore
@@ -42,15 +42,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$light: #e4f0f7;
+$dark: #2b373e;
+a {
+    color: $light;
+}
 .sansfont {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 .bordered { 
-  /* border-bottom: 1px solid hsl(0, 0%, 15%); */
-  background-color: #84a8c6 !important;
-  /* background-color: #5d707f !important; */
-    /* background-color: #faf3dd !important; */
+  background-color: $dark !important;
+  border-bottom: 1px solid hsl(0, 0%, 15%);
 
 }
 </style>
+
