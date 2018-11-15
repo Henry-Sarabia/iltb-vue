@@ -2,7 +2,7 @@
     <a 
         v-bind="$attrs"
         v-on="$listeners"
-        class="button is-light" 
+        class="button" 
     >
         <slot></slot>
     </a>
