@@ -14,7 +14,7 @@
 import VLoot from './VLoot.vue';
 
 export default {
-    name: "Content",
+    name: "TheContent",
     components: {
         VLoot
     }
