@@ -36,7 +36,6 @@ $stroke: -1px -1px 0 $dark,  1px -1px 0 $dark, -1px 1px 0 $dark, 1px 1px 0 $dark
 
 .dark {
     color: $dark;
-    // text-shadow: $stroke;
 
     strong {
         color: $dark;
