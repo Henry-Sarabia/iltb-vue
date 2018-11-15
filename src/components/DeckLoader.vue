@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Cards
+        <VDeck
             v-bind:itemWrappers="itemWrappers"
             v-on:decrement="getItem"
         />
@@ -9,18 +9,18 @@
 
 <script>
 import {get} from "axios";
-import Cards from "./Cards.vue";
+import VDeck from "./VDeck.vue";
 import VButton from "./VButton.vue";
 
 export default {
-    name: "VLoot",
+    name: "DeckLoader",
     data () {
         return {
             itemWrappers: []
             }
     },
     components: {
-        Cards,
+        VDeck,
         VButton
     },
     methods: {

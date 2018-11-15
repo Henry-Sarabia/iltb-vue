@@ -54,7 +54,7 @@
 
 <script>
 export default {
-    name: 'Card',
+    name: 'VCard',
     props: {
         item: {
             name: String,

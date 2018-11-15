@@ -1,12 +1,12 @@
 <template>
-    <div class="cards">
+    <div class="deck">
         <vue-swing
             @throwoutend="onThrowoutEnd"
             @dragstart="onDragStart()"
             :config="config"
             ref="vueswing"
         >
-            <Card
+            <VCard
                 v-for="(wrapper, index) in itemWrappers"
                 :key="wrapper.id"
                 v-bind:item="wrapper.item"
@@ -15,20 +15,20 @@
                 v-bind:class="classObject"  
                 v-bind:style="{'animation-delay': index * 0.25 + 0.25 + 's'}"    
             >
-            </Card>
+            </VCard>
         </vue-swing>
     </div>
 </template>
 
 <script>
 import VueSwing from "vue-swing";
-import Card from "./Card.vue";
+import VCard from "./VCard.vue";
 
 export default {
-    name: "Cards",
+    name: "VDeck",
     components: {
         VueSwing,
-        Card
+        VCard
     },
     props: {
         itemWrappers: Array
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cards {
+.deck {
     position: relative;
     margin: 260px auto;
     padding: 5rem 1rem;
@@ -96,36 +96,4 @@ export default {
     transform: none;
   }
 }
-
-// .animate {
-//     animation: slide-in-right 0.82s cubic-bezier(.36,.07,.19,.97) both;
-//     animation-iteration-count: 1;
-//     animation-delay: 0.5s;
-//     transform: translate3d(0, 0, 0);
-//     backface-visibility: hidden;
-//     perspective: 1000px;
-// }
-
-// .pulled-left {
-//     transform: translate3d(-100px, 0, 0);
-//     opacity: 0;
-// }
-
-// .slide-in {
-//     transition: transform 1s, opacity 1s;
-//     transform: translate3d(0, 0, 0);
-//     opacity: 1;
-// }
-
-// @keyframes slide-in-right {
-//     0% {
-//         transform: translate3d(-100px, 0, 0);
-//         opacity: 0;
-//     }
-
-//     100% {
-//         transform: translate3d(0, 0, 0);
-//         opacity: 1;
-//     }
-// }
 </style>

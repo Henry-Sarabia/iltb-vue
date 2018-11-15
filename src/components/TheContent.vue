@@ -2,7 +2,7 @@
     <div class="container has-text-centered">
         <h2 class="title is-size-2 light">The Endless Deck of Mundane Items</h2>
         <div> 
-            <v-loot></v-loot>
+            <DeckLoader></DeckLoader>
         </div>
         <h3 class="subtitle is-size-3 light">
             Drag <strong>left</strong> or <strong>right</strong>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import VLoot from './VLoot.vue';
+import DeckLoader from './DeckLoader.vue';
 
 export default {
     name: "TheContent",
     components: {
-        VLoot
+        DeckLoader
     }
 }
 </script>
