@@ -35,7 +35,7 @@ export default {
         }
     },
     created() {
-        for(var i = 0; i < 3; i++) {
+        for(var i = 0; i < 5; i++) {
             this.getItem();
         }
     }

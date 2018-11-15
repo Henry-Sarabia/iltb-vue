@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cards">
         <vue-swing
             @throwoutend="onThrowoutEnd"
             @dragstart="onDragStart()"
@@ -12,8 +12,10 @@
                 v-bind:item="wrapper.item"
                 v-bind:id="wrapper.id"
                 v-bind:index="index"
-                v-bind:showShadow="shouldShadow(index)"
-            />
+                v-bind:class="classObject"  
+                v-bind:style="{'animation-delay': index * 0.25 + 0.25 + 's'}"    
+            >
+            </Card>
         </vue-swing>
     </div>
 </template>
@@ -41,46 +43,89 @@ export default {
                 minThrowOutDistance: 425,
                 maxThrowOutDistance: 650,
                 maxRotation: 30,
-            },
-            swungCards: [],
-            topCard: 0,
+            }
         }
     },
     methods: { 
-        onDragStart () {
-            this.iterateTopCard(); 
-        },
         onThrowoutEnd({target}) {
             if (target.hasSwung) {
                 return
             }
             target.hasSwung = true;
-            this.swungCards[this.topCard] = true;
             this.$emit("decrement"); 
             if (this.itemWrappers.length > 8) {
                 this.itemWrappers.shift();
             }
-            // this.iterateTopCard();
-        },
-        iterateTopCard() {
-            if (this.topCard >= 8) {
-                return
-            }
-            this.topCard = this.topCard + 1;
-        },
-        hasSwung(index) {
-            if (this.swungCards[index] === true) {
-                return true;
-            }
-            return false;
-        },
-        shouldShadow(index) {
-            if (index == this.topCard) {
-                return true;
-            } else {
-                return false;
+        }
+    },
+    computed: {
+        classObject: function () {
+            return {
+                'animate-slide-in': (this.itemWrappers.length <= 5) ? true : false
             }
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.cards {
+    position: relative;
+    margin: 260px auto;
+    padding: 5rem 1rem;
+}
+
+.animate-slide-in {
+    animation: slide-in 1s cubic-bezier(.58,1.65,.93,.87);
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-15rem);
+  }
+
+  35% {
+      opacity: 1;
+  }
+  
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// .animate {
+//     animation: slide-in-right 0.82s cubic-bezier(.36,.07,.19,.97) both;
+//     animation-iteration-count: 1;
+//     animation-delay: 0.5s;
+//     transform: translate3d(0, 0, 0);
+//     backface-visibility: hidden;
+//     perspective: 1000px;
+// }
+
+// .pulled-left {
+//     transform: translate3d(-100px, 0, 0);
+//     opacity: 0;
+// }
+
+// .slide-in {
+//     transition: transform 1s, opacity 1s;
+//     transform: translate3d(0, 0, 0);
+//     opacity: 1;
+// }
+
+// @keyframes slide-in-right {
+//     0% {
+//         transform: translate3d(-100px, 0, 0);
+//         opacity: 0;
+//     }
+
+//     100% {
+//         transform: translate3d(0, 0, 0);
+//         opacity: 1;
+//     }
+// }
+</style>

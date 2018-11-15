@@ -73,10 +73,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url(https://fonts.googleapis.com/css?family=Roboto:700,900);
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:500,600,700);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:500,600,700);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:600,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700);
 
 // variables
 $card-width:  350px;
