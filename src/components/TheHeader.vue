@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar bordered">
+    <nav class="navbar bg">
         <div class="container">
             <div class="navbar-brand">
                 <a 
@@ -13,14 +13,14 @@
                     <div class="navbar-item">
                         <VButton 
                             href="http://www.github.com"
-                            class="is-outlined"
+                            class="is-outlined is-light"
                         >
                             <font-awesome-icon 
                                 v-bind:icon="['fab', 'github']"
                                 size="sm"
                                 class="icon is-small"
                             />
-                            <span class="sansfont">
+                            <span class="button-text">
                                 Explore
                             </span>
                         </VButton>
@@ -43,17 +43,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$light: #e4f0f7;
+
+$light: #fff7d0;
 $dark: #2b373e;
+
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+
 a {
     color: $light;
 }
-.sansfont {
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+.button-text {
+    // font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    padding-left: 0.25rem;
 }
-.bordered { 
+
+.bg { 
   background-color: $dark !important;
-  border-bottom: 1px solid hsl(0, 0%, 15%);
 
 }
 </style>

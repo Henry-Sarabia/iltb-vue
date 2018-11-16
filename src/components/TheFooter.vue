@@ -21,9 +21,8 @@ p {
 }
 
 .border {
-    /* border-top: 1px solid hsl(0, 0%, 70%); */
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 0.875rem 0;
+    margin: 0;
     background-color: $dark!important;
     /* background-color: #5d707f !important; */
     /* background-color: #faf3dd !important; */

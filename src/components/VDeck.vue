@@ -13,7 +13,7 @@
                 v-bind:id="wrapper.id"
                 v-bind:index="index"
                 v-bind:class="classObject"  
-                v-bind:style="{'animation-delay': index * 0.25 + 0.25 + 's'}"    
+                v-bind:style="{'animation-delay': index * 0.25 + 0.75 + 's'}"    
             >
             </VCard>
         </vue-swing>
